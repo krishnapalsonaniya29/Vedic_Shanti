@@ -273,7 +273,7 @@ export default function App() {
             </span>
           </div>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-            {photos.map((src, index) => (
+            {photos.map((src) => (
               <div
                 key={src}
                 className="image-wash group h-48 overflow-hidden rounded-lg md:h-56"
