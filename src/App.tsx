@@ -11,7 +11,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import omkareshwar from "./assets/omkareshwar.jpg";
+import omkareshwar from "./assets/Omkareshwar.jpg";
 import god2 from "./assets/god2.jpg";
 import yagya from "./assets/yagya.jpg";
 import meditation from "./assets/meditation.jpg";
