@@ -195,9 +195,10 @@ export default function App() {
             <div className="p-8">
               <p className="font-dev text-3xl">भूमि पूजन</p>
               <p className="font-dev mt-3 text-white/75">
-                वैदिक शांति आश्रम · ग्राम – झिरिया
+                वैदिक शांति आश्रम · ग्राम – झीगड़ी इंदौर बड़वाह मार्ग पर बलवाड़ा से
+                5 किमी आगे
                 <br />
-                जिला – खरगोन, मध्य प्रदेश
+                जिला – खरगोन, मध्य प्रदेश, 451115
               </p>
             </div>
             <div className="flex items-center bg-white/5 px-8 text-sm font-semibold text-[#e3c681]">
