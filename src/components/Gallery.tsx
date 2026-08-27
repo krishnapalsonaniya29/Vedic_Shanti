@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import gallery1 from "../assets/gallery/1.webp";
 import gallery2 from "../assets/gallery/2.webp";
@@ -7,96 +8,11 @@ import gallery3 from "../assets/gallery/3.webp";
 import gallery4 from "../assets/gallery/4.webp";
 import gallery5 from "../assets/gallery/5.webp";
 import gallery6 from "../assets/gallery/6.webp";
-import gallery7 from "../assets/gallery/7.webp";
-import gallery8 from "../assets/gallery/35.webp";
-import gallery9 from "../assets/gallery/9.webp";
-import gallery10 from "../assets/gallery/10.webp";
-import gallery11 from "../assets/gallery/11.webp";
-import gallery12 from "../assets/gallery/12.webp";
-import gallery13 from "../assets/gallery/13.webp";
-import gallery14 from "../assets/gallery/14.webp";
-import gallery15 from "../assets/gallery/15.webp";
-import gallery16 from "../assets/gallery/16.webp";
-import gallery17 from "../assets/gallery/17.webp";
-import gallery18 from "../assets/gallery/18.webp";
-import gallery19 from "../assets/gallery/19.webp";
-import gallery20 from "../assets/gallery/20.webp";
-import gallery21 from "../assets/gallery/21.webp";
-import gallery22 from "../assets/gallery/22.webp";
-import gallery23 from "../assets/gallery/23.webp";
-import gallery24 from "../assets/gallery/24.webp";
-import gallery25 from "../assets/gallery/25.webp";
-import gallery26 from "../assets/gallery/26.webp";
-import gallery27 from "../assets/gallery/27.webp";
-import gallery28 from "../assets/gallery/28.webp";
-import gallery29 from "../assets/gallery/29.webp";
-import gallery30 from "../assets/gallery/30.webp";
-import gallery31 from "../assets/gallery/31.webp";
-import gallery32 from "../assets/gallery/32.webp";
-import gallery33 from "../assets/gallery/33.webp";
-import gallery34 from "../assets/gallery/34.webp";
 
-const photos = [
-  gallery1,
-  gallery2,
-  gallery3,
-  gallery4,
-  gallery5,
-  gallery6,
-  gallery7,
-  gallery8,
-  gallery9,
-  gallery10,
-  gallery11,
-  gallery12,
-  gallery13,
-  gallery14,
-  gallery15,
-  gallery16,
-  gallery17,
-  gallery18,
-  gallery19,
-  gallery20,
-  gallery21,
-  gallery22,
-  gallery23,
-  gallery24,
-  gallery25,
-  gallery26,
-  gallery27,
-  gallery28,
-  gallery29,
-  gallery30,
-  gallery31,
-  gallery32,
-  gallery33,
-  gallery34,
-];
-
-const IMAGES_PER_PAGE = 6;
+const photos = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6];
 
 export default function Gallery() {
-  const [startIndex, setStartIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const visiblePhotos = photos.slice(startIndex, startIndex + IMAGES_PER_PAGE);
-
-  const canGoPrevious = startIndex > 0;
-  const canGoNext = startIndex + IMAGES_PER_PAGE < photos.length;
-
-  const handlePrevious = () => {
-    if (canGoPrevious) {
-      setStartIndex((prev) => Math.max(0, prev - IMAGES_PER_PAGE));
-    }
-  };
-
-  const handleNext = () => {
-    if (canGoNext) {
-      setStartIndex((prev) =>
-        Math.min(photos.length - IMAGES_PER_PAGE, prev + IMAGES_PER_PAGE),
-      );
-    }
-  };
 
   return (
     <>
@@ -110,30 +26,18 @@ export default function Gallery() {
               <h2 className="font-dev mt-3 text-4xl">आश्रम की झलकियाँ</h2>
             </div>
 
-            <div className="hidden items-center gap-2 sm:flex">
-              <button
-                onClick={handlePrevious}
-                disabled={!canGoPrevious}
-                aria-label="Previous images"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition hover:bg-white hover:text-[#30221b] disabled:cursor-not-allowed disabled:opacity-30"
-              >
-                <ChevronLeft size={20} />
-              </button>
-
-              <button
-                onClick={handleNext}
-                disabled={!canGoNext}
-                aria-label="Next images"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition hover:bg-white hover:text-[#30221b] disabled:cursor-not-allowed disabled:opacity-30"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
+            <Link
+              to="/gallery"
+              className="hidden items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm transition hover:bg-white hover:text-[#30221b] sm:inline-flex"
+            >
+              सभी तस्वीरें देखें
+              <ArrowRight size={16} />
+            </Link>
           </div>
 
           {/* Gallery */}
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-            {visiblePhotos.map((src, index) => (
+            {photos.map((src, index) => (
               <button
                 key={src}
                 onClick={() => setSelectedImage(src)}
@@ -141,7 +45,7 @@ export default function Gallery() {
               >
                 <img
                   src={src}
-                  alt={`Ashram experience ${startIndex + index + 1}`}
+                  alt={`Ashram experience ${index + 1}`}
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                 />
@@ -149,32 +53,16 @@ export default function Gallery() {
             ))}
           </div>
 
-          {/* Mobile arrows */}
-          <div className="mt-6 flex justify-center gap-3 sm:hidden">
-            <button
-              onClick={handlePrevious}
-              disabled={!canGoPrevious}
-              aria-label="Previous images"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition hover:bg-white hover:text-[#30221b] disabled:cursor-not-allowed disabled:opacity-30"
+          {/* Mobile button */}
+          <div className="mt-8 flex justify-center sm:hidden">
+            <Link
+              to="/gallery"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm transition hover:bg-white hover:text-[#30221b]"
             >
-              <ChevronLeft size={20} />
-            </button>
-
-            <button
-              onClick={handleNext}
-              disabled={!canGoNext}
-              aria-label="Next images"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition hover:bg-white hover:text-[#30221b] disabled:cursor-not-allowed disabled:opacity-30"
-            >
-              <ChevronRight size={20} />
-            </button>
+              सभी तस्वीरें देखें
+              <ArrowRight size={16} />
+            </Link>
           </div>
-
-          {/* Page indicator */}
-          <p className="mt-5 text-center text-sm text-white/40">
-            {startIndex + 1}–{Math.min(startIndex + 6, photos.length)} of{" "}
-            {photos.length}
-          </p>
         </div>
       </section>
 
