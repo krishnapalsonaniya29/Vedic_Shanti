@@ -34,10 +34,10 @@ export default function AashramSuvidha() {
     <section className="container-wide py-24">
       {/* Header */}
       <div className="mb-12">
-        <p className="section-kicker">Ashram Facilities</p>
+        <p className="section-kicker">Key Facilities Near the Ashram</p>
 
         <h2 className="font-dev mt-3 text-4xl md:text-5xl">
-          आश्रम में सुविधाएँ
+          आश्रम के आसपास की प्रमुख सुविधाएँ
         </h2>
 
         <p className="font-dev mt-4 max-w-2xl text-lg leading-8 text-[#725e51]">

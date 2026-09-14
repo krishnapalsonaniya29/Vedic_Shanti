@@ -72,7 +72,7 @@ export default function UpcomingEventSection() {
         </div>
 
         <div className="overflow-hidden rounded-2xl bg-[#30221b] text-white shadow-xl"></div>
-
+        <div className="mx-8 border-t border-white/10 md:mx-0" />
         {/* Event 3 */}
         <div className="grid md:grid-cols-[210px_1fr_auto]">
           {/* Date */}

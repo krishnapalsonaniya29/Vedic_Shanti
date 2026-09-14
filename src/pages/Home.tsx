@@ -4,9 +4,7 @@ import {
   BookOpenText,
   ChevronRight,
   Flame,
-  MapPin,
   Menu,
-  Phone,
   Soup,
   Sparkles,
   X,
@@ -379,33 +377,21 @@ export default function Home() {
           <p className="mt-6 max-w-md leading-8 text-[#725e51]">
             आश्रम, आयोजन या सेवाओं से संबंधित जानकारी के लिए हमसे संपर्क करें।
           </p>
-          <div className="mt-8 flex gap-3">
-            <a
-              href="tel:+919000000000"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white"
-            >
-              <Phone size={16} /> फोन करें
-            </a>
-            <a
-              href="#home"
-              className="inline-flex items-center gap-2 rounded-full border border-[#c8b6a1] px-5 py-3 text-sm font-semibold"
-            >
-              मार्ग देखें <MapPin size={16} />
-            </a>
-          </div>
         </div>
         <div className="rounded-2xl bg-paper p-8">
           <p className="font-dev text-2xl">आश्रम संपर्क</p>
           <div className="mt-6 space-y-3 font-dev text-lg text-[#5d4536]">
-            <p>राजेश नगराले</p>
-            <p>गणेश कुशवाह</p>
-            <p>आदित्य चेलविया</p>
-            <p>अमर ठाकुर</p>
+            <p>vedicshantiaashram@gmail.com</p>
           </div>
           <div className="mt-7 border-t border-[#d9ccba] pt-6 text-sm leading-6 text-[#725e51]">
             ग्राम – झिरिया
             <br />
             जिला – खरगोन, मध्य प्रदेश
+          </div>
+          <div className="mt-7 border-t border-[#d9ccba] pt-6 text-sm leading-6 text-[#725e51]">
+            इंदौर कार्यालय :
+            <br />
+            307-बी, गोवर्धन कॉम्प्लेक्स, आर.एन.टी. मार्ग, इंदौर (म.प्र.)
           </div>
         </div>
       </section>
