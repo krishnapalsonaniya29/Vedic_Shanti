@@ -58,10 +58,7 @@ export default function UpcomingEventSection() {
             <p className="font-dev text-3xl">101 कोटियज्ञ के लिए भूमि पूजन </p>
 
             <p className="font-dev mt-3 text-white/75">
-              वैदिक शांति आश्रम · ग्राम – झीगड़ी इंदौर बड़वाह मार्ग पर बलवाड़ा से 5
-              किमी आगे
-              <br />
-              जिला – खरगोन, मध्य प्रदेश, 451115
+              महालक्ष्मी नगर मेला ग्राउंड साईं कृपा कॉलोनी, इंदौर
             </p>
           </div>
 
@@ -95,10 +92,7 @@ export default function UpcomingEventSection() {
             </p>
 
             <p className="font-dev mt-3 text-white/75">
-              वैदिक शांति आश्रम · ग्राम – झीगड़ी इंदौर बड़वाह मार्ग पर बलवाड़ा से 5
-              किमी आगे
-              <br />
-              जिला – खरगोन, मध्य प्रदेश, 451115
+              महालक्ष्मी नगर मेला ग्राउंड साईं कृपा कॉलोनी, इंदौर
             </p>
           </div>
 
