@@ -11,9 +11,8 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
-import invitation from "../assets/invitation.jpeg";
-import invitation2 from "../assets/invitation2.png";
 import Gallery from "../components/Gallery";
 import omkareshwar from "../assets/Omkareshwar.jpg";
 import god2 from "../assets/god2.jpg";
@@ -24,9 +23,13 @@ import accommodation from "../assets/accommodation.jpg";
 import FoodSection from "../components/FoodSection";
 import KathaSection from "../components/KathaSection";
 import MantraSection from "../components/MantraSection";
+import UpcomingEventSection from "../components/UpcomingEventSection";
+import AashramSuvidha from "../components/AashramSuvidha";
+import SocialActivities from "../components/SocialActivities";
+import NyasPrakriti from "../components/NyasPrakriti";
 const navItems = [
   "About",
-  "Facilities",
+  "Upcoming Events",
   "Yajna",
   "Meditation",
   "Katha",
@@ -61,7 +64,7 @@ const facilities = [
 
 export default function Home() {
   const [open, setOpen] = useState(false);
-  const [showInvitation, setShowInvitation] = useState(false);
+  const navigate = useNavigate();
   return (
     <main className="overflow-x-hidden">
       <header className="absolute z-20 w-full text-white">
@@ -74,17 +77,30 @@ export default function Home() {
             />
             <span className="font-dev text-base">वैदिक शांति आश्रम</span>
           </a>
+          {/* Desktop Navigation */}
           <nav className="hidden items-center gap-6 text-[11px] font-semibold tracking-[.13em] uppercase lg:flex">
-            {navItems.map((i) => (
-              <a
-                key={i}
-                href={"#" + i.toLowerCase()}
-                className="transition hover:text-[#e3c681]"
-              >
-                {i}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item === "Upcoming Events" ? (
+                <Link
+                  key={item}
+                  to="/upcoming-events"
+                  className="transition hover:text-[#e3c681]"
+                >
+                  {item}
+                </Link>
+              ) : (
+                <a
+                  key={item}
+                  href={"#" + item.toLowerCase()}
+                  className="transition hover:text-[#e3c681]"
+                >
+                  {item}
+                </a>
+              ),
+            )}
           </nav>
+
+          {/* Mobile Menu Button */}
           <button
             className="lg:hidden"
             aria-label="Open menu"
@@ -92,22 +108,32 @@ export default function Home() {
           >
             {open ? <X /> : <Menu />}
           </button>
+          {open && (
+            <div className="bg-[#30221b]/98 px-6 py-6 lg:hidden">
+              <nav className="container-wide flex flex-col gap-4 text-sm">
+                {navItems.map((item) =>
+                  item === "Upcoming Events" ? (
+                    <Link
+                      key={item}
+                      to="/upcoming-events"
+                      onClick={() => setOpen(false)}
+                    >
+                      {item}
+                    </Link>
+                  ) : (
+                    <a
+                      key={item}
+                      href={"#" + item.toLowerCase()}
+                      onClick={() => setOpen(false)}
+                    >
+                      {item}
+                    </a>
+                  ),
+                )}
+              </nav>
+            </div>
+          )}
         </div>
-        {open && (
-          <div className="bg-[#30221b]/98 px-6 py-6 lg:hidden">
-            <nav className="container-wide flex flex-col gap-4 text-sm">
-              {navItems.map((i) => (
-                <a
-                  key={i}
-                  onClick={() => setOpen(false)}
-                  href={"#" + i.toLowerCase()}
-                >
-                  {i}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
       </header>
       <section
         id="home"
@@ -131,7 +157,7 @@ export default function Home() {
               परंपरा, साधना और शांति का एक पवित्र स्थान
             </p>
             <button
-              onClick={() => setShowInvitation(true)}
+              onClick={() => navigate("/upcoming-events")}
               className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#d8b96f] px-6 py-3.5 text-xs font-bold tracking-[.1em] text-[#30221b] uppercase transition hover:bg-white"
             >
               Upcoming Event <ChevronRight size={16} />
@@ -195,39 +221,11 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className="container-wide py-24">
-        <div className="mb-9 flex flex-wrap items-end justify-between gap-5">
-          <div>
-            <p className="section-kicker">Gather in prayer</p>
-            <h2 className="font-dev mt-3 text-4xl">आगामी आयोजन</h2>
-          </div>
-          <span className="text-sm text-[#725e51]">
-            श्रद्धा से आपका स्वागत है
-          </span>
-        </div>
-        <div className="overflow-hidden rounded-2xl bg-[#30221b] text-white shadow-xl">
-          <div className="grid md:grid-cols-[210px_1fr_auto]">
-            <div className="bg-saffron p-8 text-center">
-              <div className="font-dev text-5xl">26</div>
-              <div className="mt-1 text-xs font-bold tracking-[.2em] uppercase">
-                July 2026
-              </div>
-            </div>
-            <div className="p-8">
-              <p className="font-dev text-3xl">भूमि पूजन</p>
-              <p className="font-dev mt-3 text-white/75">
-                वैदिक शांति आश्रम · ग्राम – झीगड़ी इंदौर बड़वाह मार्ग पर बलवाड़ा से
-                5 किमी आगे
-                <br />
-                जिला – खरगोन, मध्य प्रदेश, 451115
-              </p>
-            </div>
-            <div className="flex items-center bg-white/5 px-8 text-sm font-semibold text-[#e3c681]">
-              प्रातः 10:30 बजे
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <UpcomingEventSection />
+      <NyasPrakriti />
+      <AashramSuvidha />
+      <SocialActivities />
       <section id="facilities" className="bg-[#f1eadf] py-24">
         <div className="container-wide">
           <div className="max-w-xl">
@@ -444,39 +442,6 @@ export default function Home() {
           © 2026 Vedic Shanti Ashram
         </div>
       </footer>
-      {showInvitation && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-          onClick={() => setShowInvitation(false)}
-        >
-          <div
-            className="relative max-h-[95vh] max-w-6xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setShowInvitation(false)}
-              className="absolute -right-3 -top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-xl text-[#30221b] shadow-lg"
-              aria-label="Close invitation"
-            >
-              ×
-            </button>
-
-            <div className="grid max-h-[90vh] grid-cols-2 gap-3 overflow-auto">
-              <img
-                src={invitation}
-                alt="Upcoming event invitation"
-                className="h-auto max-h-[90vh] w-full rounded-lg object-contain shadow-2xl"
-              />
-
-              <img
-                src={invitation2}
-                alt="Upcoming event invitation details"
-                className="h-auto max-h-[90vh] w-full rounded-lg object-contain shadow-2xl"
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
